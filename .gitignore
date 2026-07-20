@@ -1,0 +1,5 @@
+p2/oracleJdk-26/
+*.class
+out/
+build/
+target/
