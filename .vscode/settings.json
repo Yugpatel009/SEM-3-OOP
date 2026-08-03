@@ -1,9 +1,13 @@
 {
-    "java.configuration.runtimes": [
-        {
-            "name": "JavaSE-17",
-            "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.18.8-hotspot",
-            "default": true
-        }
+    "java.project.sourcePaths": [
+        "Lab-01/Lab-01/PartA/Practical-1",
+        "Lab-01/Lab-01/PartA/Practical-2",
+        "Lab-01/Lab-01/PartA/Practical-3",
+        "Lab-01/Lab-01/PartB/Miniproject",
+        "Lab-02/Lab-02/PartA/Practical-1",
+        "Lab-02/Lab-02/PartA/Practical-2",
+        "Lab-02/Lab-02/PartA/Practical-3",
+        "Lab-02/Lab-02/PartB/Miniproject"
     ]
 }
+
