@@ -1,5 +1,6 @@
 p2/oracleJdk-26/
 *.class
+*.zip
 out/
 build/
 target/
