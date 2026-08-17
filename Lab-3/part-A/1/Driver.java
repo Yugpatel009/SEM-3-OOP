@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Driver {
     public static void main(String[] args) {
         // (d) In Driver.main: build a Point[] with some repeated coordinates.
