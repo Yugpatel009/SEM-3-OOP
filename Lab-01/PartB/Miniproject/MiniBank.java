@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class MiniBank {
     public static void main(String[] args) {
-        BankInfo info = new BankInfo("MiniBank", "Nadiad");   // read-only bank info
+        BankInfo info = new BankInfo("MiniBank", "Nadiad");
         System.out.println("================================================");
         System.out.println("   " + info.name() + " - " + info.branch() + " Branch");
         System.out.println("================================================");
@@ -10,18 +10,16 @@ public class MiniBank {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
-        // Show the menu repeatedly until the user chooses EXIT.
         while (running) {
             printMenu();
-            int choice = readChoice(scanner);        // read the user's number
-            MenuOption option = toOption(choice);    // map number -> option
+            int choice = readChoice(scanner);
+            MenuOption option = toOption(choice);
 
-            if (option == null) {                    // out of range
+            if (option == null) {
                 System.out.println("Invalid choice. Please enter a number from 1 to 5.\n");
                 continue;
             }
 
-            // switch EXPRESSION turns the chosen option into a message.
             String message = switch (option) {
                 case OPEN_ACCOUNT -> "Open Account - to be implemented in a later lab.";
                 case DEPOSIT      -> "Deposit - to be implemented in a later lab.";
@@ -36,7 +34,6 @@ public class MiniBank {
         scanner.close();
     }
 
-    /** Prints the numbered menu. */
     private static void printMenu() {
         System.out.println("Please choose an option:");
         System.out.println("  1. Open Account");
@@ -47,14 +44,12 @@ public class MiniBank {
         System.out.print("Enter your choice (1-5): ");
     }
 
-    /** Reads an integer; returns -1 if the input is not a number. */
     private static int readChoice(Scanner scanner) {
         if (scanner.hasNextInt()) return scanner.nextInt();
-        if (scanner.hasNext()) scanner.next();       // discard non-number token
+        if (scanner.hasNext()) scanner.next();
         return -1;
     }
 
-    /** Maps a menu number to a MenuOption, or null if out of range. */
     private static MenuOption toOption(int choice) {
         return switch (choice) {
             case 1 -> MenuOption.OPEN_ACCOUNT;

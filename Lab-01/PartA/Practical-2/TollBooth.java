@@ -1,15 +1,13 @@
 import java.util.Scanner;
 
-
 public class TollBooth {
 
-   
     record Vehicle(String number, String type) { }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int totalToll = 0;
-        int bikes = 0, cars = 0, trucks = 0;     
+        int bikes = 0, cars = 0, trucks = 0;
 
         System.out.println("Enter vehicles. Type 'done' for the number to stop.");
 
@@ -21,15 +19,13 @@ public class TollBooth {
             System.out.print("Type (bike/car/truck): ");
             String type = sc.next().toLowerCase();
 
-            Vehicle v = new Vehicle(number, type);   // build the record
+            Vehicle v = new Vehicle(number, type);
 
-            // Block form of a switch expression: it runs statements and
-            // returns a value with 'yield'.
             int toll = switch (v.type()) {
                 case "bike"  -> { bikes++;  yield 20;  }
                 case "car"   -> { cars++;   yield 50;  }
                 case "truck" -> { trucks++; yield 150; }
-                default      -> 0;                       // unknown type pays 0
+                default      -> 0;
             };
 
             totalToll += toll;
@@ -38,7 +34,6 @@ public class TollBooth {
 
         System.out.println("Total toll collected: " + totalToll);
 
-        // Most frequent type by comparing counters.
         String mostFrequent;
         if (bikes >= cars && bikes >= trucks)      mostFrequent = "bike";
         else if (cars >= bikes && cars >= trucks)  mostFrequent = "car";

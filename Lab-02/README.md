@@ -15,8 +15,8 @@ JDK 17 or newer — check with `java -version`.
 ```
 cd PartB/Miniproject
 javac *.java
-java MiniBank     # the real menu (entry point)
-java Main         # scratch test that exercises Account/Customer this lab
+java MiniBank
+java Main
 ```
 
 ## Submit on GitHub

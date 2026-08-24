@@ -2,7 +2,7 @@ import java.util.Objects;
 
 public class Driver {
     public static void main(String[] args) {
-        // (d) In Driver.main: build a Point[] with some repeated coordinates.
+
         point[] points = {
                 new point(1, 2),
                 new point(3, 4),
@@ -32,7 +32,6 @@ public class Driver {
 
         }
 
-        // Print “Distinct: N”.
         System.out.println("Distinct: " + distinctCount);
     }
 }

@@ -1,15 +1,13 @@
 import java.util.Random;
 import java.util.Scanner;
 
-
 public class RPSLS {
 
     enum Move { ROCK, PAPER, SCISSORS, LIZARD, SPOCK }
 
-    
     static int winner(Move a, Move b) {
-        if (a == b) return 0;                          // same move -> tie
-       
+        if (a == b) return 0;
+
         boolean aWins = switch (a) {
             case ROCK     -> b == Move.LIZARD   || b == Move.SCISSORS;
             case PAPER    -> b == Move.ROCK     || b == Move.SPOCK;
@@ -23,7 +21,7 @@ public class RPSLS {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Random rng = new Random();
-        Move[] moves = Move.values();      // all five moves, as an array
+        Move[] moves = Move.values();
         int you = 0, cpu = 0;
 
         System.out.println("Best of 5. Moves: ROCK PAPER SCISSORS LIZARD SPOCK");
@@ -37,7 +35,7 @@ public class RPSLS {
                 System.out.println("  Invalid move, round skipped.");
                 continue;
             }
-            Move theirs = moves[rng.nextInt(moves.length)];   // random computer move
+            Move theirs = moves[rng.nextInt(moves.length)];
 
             int r = winner(mine, theirs);
             System.out.print("  You: " + mine + " | Computer: " + theirs + " -> ");

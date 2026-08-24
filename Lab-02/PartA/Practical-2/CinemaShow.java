@@ -1,35 +1,30 @@
-/**
- * Practical 2 (Part A) - Cinema Show
- * Concepts: encapsulation, methods that validate and report success,
- * a final capacity, a static total shared by all shows, overloaded constructors.
- */
+
+
 public class CinemaShow {
     private String title;
     private int seatsAvailable;
-    private final int capacity;             // set once, cannot change
-    private static int totalBooked = 0;     // across EVERY show
+    private final int capacity;
+    private static int totalBooked = 0;
 
     public CinemaShow(String title, int capacity) {
         this.title = title;
         this.capacity = capacity;
-        this.seatsAvailable = capacity;     // starts empty: all seats free
+        this.seatsAvailable = capacity;
     }
 
-    public CinemaShow(String title) {       // default capacity 100
+    public CinemaShow(String title) {
         this(title, 100);
     }
 
-    /** Book n seats; succeeds only if enough remain. Returns true on success. */
     public boolean book(int n) {
         if (n > 0 && n <= seatsAvailable) {
             seatsAvailable -= n;
             totalBooked   += n;
             return true;
         }
-        return false;                       // not enough seats: nothing changes
+        return false;
     }
 
-    /** Cancel n seats, but never let availability exceed the capacity. */
     public void cancel(int n) {
         if (n > 0) {
             seatsAvailable += n;
@@ -41,14 +36,14 @@ public class CinemaShow {
     public static int getTotalBooked() { return totalBooked; }
 
     public static void main(String[] args) {
-        CinemaShow a = new CinemaShow("Interstellar", 5);   // small, to show limits
-        CinemaShow b = new CinemaShow("Dune");              // default capacity 100
+        CinemaShow a = new CinemaShow("Interstellar", 5);
+        CinemaShow b = new CinemaShow("Dune");
 
-        System.out.println("A book 3 -> " + a.book(3) + " | seats " + a.getSeatsAvailable()); // true, 2
-        System.out.println("A book 4 -> " + a.book(4) + " | seats " + a.getSeatsAvailable()); // false, 2
+        System.out.println("A book 3 -> " + a.book(3) + " | seats " + a.getSeatsAvailable());
+        System.out.println("A book 4 -> " + a.book(4) + " | seats " + a.getSeatsAvailable());
         a.cancel(1);
-        System.out.println("A cancel 1 | seats " + a.getSeatsAvailable());                    // 3
-        System.out.println("B book 10 -> " + b.book(10) + " | seats " + b.getSeatsAvailable());// true, 90
-        System.out.println("Total booked across shows: " + CinemaShow.getTotalBooked());       // 13
+        System.out.println("A cancel 1 | seats " + a.getSeatsAvailable());
+        System.out.println("B book 10 -> " + b.book(10) + " | seats " + b.getSeatsAvailable());
+        System.out.println("Total booked across shows: " + CinemaShow.getTotalBooked());
     }
 }

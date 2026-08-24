@@ -1,56 +1,49 @@
-/**
- * Practical 1 (Part A) - Smart Thermostat
- * Concepts: encapsulation (private fields changed only through methods),
- * static members, constructor overloading and chaining, range checking.
- */
+
+
 public class Thermostat {
-    private String location;               // where this thermostat is
-    private int temperature;               // current temperature (Celsius)
+    private String location;
+    private int temperature;
 
-    private static final int MIN = 16;     // shared limits for every thermostat
+    private static final int MIN = 16;
     private static final int MAX = 30;
-    private static int activeCount = 0;    // how many Thermostat objects exist
+    private static int activeCount = 0;
 
-    /** Full constructor: keep startTemp only if it is within the safe range. */
     public Thermostat(String location, int startTemp) {
         this.location = location;
         this.temperature = (startTemp >= MIN && startTemp <= MAX) ? startTemp : 22;
-        activeCount++;                     // one more thermostat now exists
+        activeCount++;
     }
 
-    /** Convenience constructor: chains to the full one with a default of 22. */
     public Thermostat(String location) {
         this(location, 22);
     }
 
-    /** Raise by 1, but never above MAX. */
     public void raise() {
         if (temperature < MAX) temperature++;
         else System.out.println("  Already at maximum (" + MAX + ")");
     }
 
-    /** Lower by 1, but never below MIN. */
     public void lower() {
         if (temperature > MIN) temperature--;
         else System.out.println("  Already at minimum (" + MIN + ")");
     }
 
-    public int getTemperature() { return temperature; }   // getter only, NO setter
+    public int getTemperature() { return temperature; }
     public String getLocation() { return location; }
     public static int getActiveCount() { return activeCount; }
 
     public static void main(String[] args) {
         Thermostat living  = new Thermostat("Living Room", 24);
-        Thermostat bedroom = new Thermostat("Bedroom");     // defaults to 22
+        Thermostat bedroom = new Thermostat("Bedroom");
 
         System.out.println("Raising " + living.getLocation() + ":");
-        for (int i = 0; i < 10; i++) {          // try to raise ten times
+        for (int i = 0; i < 10; i++) {
             living.raise();
             System.out.println("  temp = " + living.getTemperature());
         }
 
         System.out.println("Lowering " + bedroom.getLocation() + ":");
-        for (int i = 0; i < 20; i++) {          // try to lower twenty times
+        for (int i = 0; i < 20; i++) {
             bedroom.lower();
             System.out.println("  temp = " + bedroom.getTemperature());
         }
